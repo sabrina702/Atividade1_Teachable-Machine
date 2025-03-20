@@ -77,10 +77,11 @@ async function predict(input) {
 
 function previewImage() {
     var image = document.querySelector("input[name=image]").files[0];
-    var preview = document.querySelector("img");
+    var preview = document.getElementById("preview");
     var reader = new FileReader();
     reader.onloadend = () => {
       preview.src = reader.result;
+      preview.style.display = "block"; 
     };
 
     if (image) {
@@ -89,5 +90,6 @@ function previewImage() {
       document.getElementById("location-src").innerText = image.name;
     } else {
       preview.src = "";
+      preview.style.display = "none"; // Oculta a imagem se nenhum arquivo for carregado
     }
   }

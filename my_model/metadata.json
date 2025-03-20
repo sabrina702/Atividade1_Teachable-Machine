@@ -1,1 +1,1 @@
-{"tfjsVersion":"1.7.4","tmVersion":"2.4.10","packageVersion":"0.8.4-alpha2","packageName":"@teachablemachine/image","timeStamp":"2025-03-19T16:00:04.456Z","userMetadata":{},"modelName":"tm-my-image-model","labels":["Nenhum Sinal","Olá","Obrigado","Tudo bem ?","Desculpa"],"imageSize":224}
+{"tfjsVersion":"1.7.4","tmVersion":"2.4.10","packageVersion":"0.8.4-alpha2","packageName":"@teachablemachine/image","timeStamp":"2025-03-20T17:09:06.855Z","userMetadata":{},"modelName":"Modelo Reciclavel","labels":["Papel","Vidro","Plástico","Metal"],"imageSize":224}
