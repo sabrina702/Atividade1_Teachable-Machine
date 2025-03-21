@@ -32,33 +32,37 @@
                 <div class="card custom-card">
                     <div class="card-body">
                         <!-- Título -->
-                        <h3 class="card-title title text-center">Modelo de IA para Classificação de Imagens</h3>
+                        <h3 class="card-title title text-center">Modelo para Classificação de Resíduos</h3>
 
                         <!-- Botões de ação -->
-                        <div class="button-container">
+                        <div class="button-container d-flex justify-content-start align-items-center gap-3">
                             <!-- Usar Câmera -->
                             <button id="webcam" class="btn custom-btn" onclick="useWebcam()">Usar Câmera</button>
+
                             <!-- Carregar Imagem -->
-                            <button class="btn custom-btn" onclick="document.getElementById('image').click()">Carregar Imagem</button>
+                            <label for="image">
+                                <input
+                                    type="file"
+                                    name="image"
+                                    id="image"
+                                    onchange="previewImage()"
+                                />
+                            </label>
+
                             <!-- Enviar Imagem -->
                             <button class="btn custom-btn" onclick="init_image()">Enviar</button>
                         </div>
 
-                        <!-- Exibição do nome da imagem -->
-                        <div id="imageName" class="text-center"></div>
-
-                        <!-- Upload de Imagem -->
-                        <div class="text-center mt-4">
-                            <input type="file" name="image" id="image" onchange="previewImage()">
+                         <!-- Contêiner da webcam -->
+                        <div id="webcam-container"></div>
+                        
+                        <!-- Exibição da imagem carregada -->
+                        <div id="uploadedImage">
+                            <img id="img" alt="Imagem carregada" />
                         </div>
-
-                        <!-- Pré-visualização da Imagem -->
-                        <div id="uploadedImage" class="text-center mt-4">
-                            <img id="preview" class="preview-img" src="" alt="Pré-visualização">
-                        </div>
-
-                        <!-- Resultado da Análise -->
-                        <div id="label-container" class="text-center mt-4"></div>
+                        
+                        <!-- Rótulos ou resultados da classificação -->
+                        <div id="label-container"></div>
                     </div>
                 </div>
             </div>
