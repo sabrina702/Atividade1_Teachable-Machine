@@ -1,0 +1,126 @@
+/* Define a imagem de fundo */
+body {
+    background: url('/Imagens/fundo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: black;
+    position: relative;
+    z-index: 1; /* Para ficar acima do overlay */
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-brand:hover {
+    color: #f8f9fa; /* Branco mais claro ao passar o mouse */
+}
+
+/* Container principal para empurrar o rodapé para baixo */
+#main {
+    min-height: calc(100vh - 100px); /* Ajusta a altura mínima para ocupar a tela */
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo na vertical */
+    align-items: center; /* Centraliza o conteúdo na horizontal */
+    padding-bottom: 40px; /* Espaçamento entre conteúdo e rodapé */
+}
+
+/* Rodapé no final da página */
+.custom-footer {
+    background-color: black; /* Fundo preto */
+    color: white; /* Texto branco */
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    margin-top: auto; /* Garante que o rodapé fique sempre na parte inferior */
+}
+
+/* Ajuste para a div card */
+.custom-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras mais suaves */
+    padding: 20px;
+    margin-top: 80px; /* Aumentando o espaço entre a navbar e a div card */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ajusta o conteúdo para ficar alinhado no topo */
+}
+
+/* Título da div card */
+.card-title {
+    font-size: 1.8rem; /* Aumentando o tamanho do título */
+    font-weight: bold;
+    margin-bottom: 60px; /* Aumentando o espaço abaixo do título */
+}
+
+/* Botões com estilo verde militar */
+.button-container {
+    display: flex;
+    justify-content: center; /* Centraliza os botões dentro da div */
+    gap: 15px;
+    margin-top: 50px; /* Aumentando o espaço entre os botões e o título */
+}
+
+/* Botões com estilo verde militar */
+.custom-btn {
+    background-color: #4b8e23; /* Verde militar */
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 6px 12px; /* Botões menores */
+    cursor: pointer;
+    font-size: 0.8rem; /* Diminuindo o texto do botão */
+    border-radius: 5px; /* Bordas mais arredondadas */
+}
+
+/* Botão com efeito de hover */
+.custom-btn:hover {
+    background-color: #3e6b1f; /* Verde mais escuro no hover */
+}
+
+/* Nome da imagem */
+#imageName {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Upload de Imagem */
+#uploadedImage {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Pré-visualização da Imagem */
+.preview-img {
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 200px; /* Largura fixa */
+    height: 200px; /* Altura fixa */
+    object-fit: cover; /* Faz a imagem se ajustar ao tamanho sem distorcer */
+}
+
+/* Exibição do resultado */
+#label-container {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px; /* Ajustando o espaço entre a imagem e o resultado */
+    text-align: center;
+}
+
+/* Ajustes para o input de imagem */
+input[type="file"] {
+    display: none; /* Oculta o campo de input */
+}
+
+
