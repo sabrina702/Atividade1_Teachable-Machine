@@ -7,39 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classificação de Resíduos para Reciclagem</title>
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet">
     
-    <!-- CSS personalizado -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Barra de Navegação -->
     <nav class="navbar navbar-dark custom-navbar">
         <a class="navbar-brand title" id="brand" href="#">Classificação de Resíduos para Reciclagem</a>
     </nav>
 
-    <!-- Conteúdo Principal -->
     <div class="container" id="main">
         <div class="row justify-content-center">
-            <div class="col-lg-10 col-md-12">
+            <div class="col-12">
                 <div class="card custom-card">
                     <div class="card-body">
-                        <!-- Título -->
                         <h3 class="card-title title text-center">Modelo para Classificação de Resíduos</h3>
 
-                        <!-- Botões de ação -->
                         <div class="button-container d-flex justify-content-start align-items-center gap-3">
-                            <!-- Usar Câmera -->
+                            <button class="btn custom-btn" onclick="init_image()">Enviar</button>
+                        
                             <button id="webcam" class="btn custom-btn" onclick="useWebcam()">Usar Câmera</button>
-
-                            <!-- Carregar Imagem -->
+                        
                             <label for="image">
                                 <input
                                     type="file"
@@ -49,19 +42,14 @@
                                 />
                             </label>
 
-                            <!-- Enviar Imagem -->
-                            <button class="btn custom-btn" onclick="init_image()">Enviar</button>
                         </div>
 
-                         <!-- Contêiner da webcam -->
                         <div id="webcam-container"></div>
                         
-                        <!-- Exibição da imagem carregada -->
                         <div id="uploadedImage">
                             <img id="img" alt="Imagem carregada" />
                         </div>
                         
-                        <!-- Rótulos ou resultados da classificação -->
                         <div id="label-container"></div>
                     </div>
                 </div>
@@ -69,12 +57,10 @@
         </div>
     </div>
 
-    <!-- Rodapé -->
     <footer class="custom-footer">
         <p>&copy; 2025 IFSULDEMINAS - Campus Machado | Projeto de IA com Teachable Machine</p>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="script.js"></script>

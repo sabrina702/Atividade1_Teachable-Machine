@@ -1,4 +1,3 @@
-/* Define a imagem de fundo */
 body {
     background: url('/Imagens/fundo.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -7,66 +6,49 @@ body {
     padding: 0;
 }
 
-/* Navbar */
 .custom-navbar {
     background-color: black;
     position: relative;
     font-size: 1.5rem;
-    z-index: 1;
-    padding: 15px 30px; /* Adiciona mais padding para aumentar a altura */
-    z-index: 1;
-    font-family: 'Poppins', sans-serif; /* Fonte mais elegante */
-    letter-spacing: 1px; /* Adiciona um pouco de espaçamento entre as letras para dar um toque mais sofisticado */
+    padding: 15px 30px;
+    font-family: 'Poppins', sans-serif; 
+    margin-bottom: 30px; 
 }
 
-/* Container principal */
 #main {
-    min-height: calc(100vh - 100px);
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 100px;
+    width: 100%; 
 }
 
-/* Rodapé */
-.custom-footer {
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    width: 100%;
-    margin-top: auto;
-}
-
-/* Card */
 .custom-card {
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px 80px 20px;
-    margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    width: 100%; /* Largura do card (ajuste para a porcentagem que preferir) */
-    margin-left: auto;
-    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px 10px;
+    margin-top: 50px;
+    flex-direction: column;
+    display: flex;
+    background: rgba(255, 255, 255, 0.9);
+    width: 100%; 
 }
 
-/* Título */
 .card-title {
     font-size: 1.8rem;
     font-weight: bold;
-    margin-bottom: 60px;
-    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center; 
 }
 
-/* Botões */
 .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; /* Menor distância entre os botões */
+    width: 100%; 
     margin-top: 50px;
 }
 
@@ -79,7 +61,8 @@ body {
     cursor: pointer;
     font-size: 0.8rem;
     border-radius: 5px;
-    width: 110px; /* Define a largura mínima para o botão 'Usar Câmera' */
+    width: 110px; 
+    transition: width 0.3s ease; 
 }
 
 .custom-btn:hover {
@@ -87,52 +70,65 @@ body {
 }
 
 input[type="file"] {
-    padding: 6px 20px;
+    padding: 6px 10px;
     cursor: pointer;
     font-size: 0.8rem;
     border-radius: 5px;
     border: none;
-    min-width: 150px; /* Mesma largura mínima para alinhar com 'Usar Câmera' */
+    min-width: 150px; 
+    width: 100%; 
+    max-width: 350px; 
+    overflow: hidden;
 }
 
 #uploadedImage {
-    width: 250px; /* Largura fixa */
-    height: 250px; /* Altura fixa */
+    width: 250px; 
+    height: 250px; 
     display: flex;
-    background-color: #f0f0f0; /* Cor de fundo enquanto a imagem não for selecionada */
-    border: 2px dashed #ccc; /* Estilo de borda para indicar o espaço do upload */
-    margin-top: 20px;
+    background-color: #f0f0f0; 
+    border: 2px dashed #ccc; 
+    margin: 20px auto; 
+    justify-content: center;
+    align-items: center;
 }
 
 #webcam-container {
-    display: none;
+    display: flex;
     width: 250px;
     height: 250px;
-    margin-top: 20px; /* Adiciona um espaço entre os botões e o container da webcam */
+    background-color: #f0f0f0;
+    border: 2px dashed #ccc;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 20px auto;
 }
 
-#uploadedImage img {
-    display: none; /* Inicialmente não exibe a imagem */
+#webcam-container canvas { 
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ajusta a imagem sem cortar */
+    object-fit: contain; 
 }
 
-/* Rótulos ou resultados da classificação */
+
+#uploadedImage img {
+    display: none; 
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
 #label-container {
     text-align: center;
     padding-top: 30px;
     margin-top: auto;
     width: 100%;
 }
-
-/* Exibição da imagem carregada */
-#uploadedImage {
-    width: 250px;
-    height: 250px;
-    display: flex;
-    background-color: #f0f0f0;
-    border: 2px dashed #ccc;
-    margin-top: 20px;
-    margin-bottom: 10px; /* Diminui a margem inferior */
+.custom-footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+    margin-top: auto;
 }

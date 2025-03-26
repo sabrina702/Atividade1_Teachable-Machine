@@ -2,32 +2,33 @@ const URL = "./my_model/";
 
 let model, webcam, labelContainer, maxPredictions, camera_on = false, image_upload = false;
 labelContainer = document.getElementById("label-container");
+document.getElementById("webcam-container").style.display = "none";
+
 let animationFrameId;
 let isWebcamActive = false;
 
-// Ativar/desativar a webcam
 function useWebcam() {
     camera_on = !camera_on;
     if (camera_on) {
-        // Esconde a pré-visualização da imagem e mostra a webcam
-        document.getElementById("uploadedImage").style.display = "none"; // Esconde a imagem carregada
-        document.getElementById("webcam-container").style.display = "block"; // Mostra a webcam
+        document.getElementById("uploadedImage").style.display = "none"; 
+        document.getElementById("webcam-container").style.display = "block"; 
 
-        // Inicializa a webcam
-        init(true); // Passa 'true' para ativar a webcam
-        document.getElementById("webcam").innerHTML = "Fechar Webcam";
+       
+        init(true); 
+        document.getElementById("webcam").innerHTML = "Fechar Câmera";
+        webcamButton.classList.add("large"); 
     } else {
-        // Mostra a pré-visualização da imagem e esconde a webcam
-        document.getElementById("uploadedImage").style.display = "block"; // Mostra a imagem carregada
-        document.getElementById("webcam-container").style.display = "none"; // Esconde a webcam
+        document.getElementById("uploadedImage").style.display = "block"; 
+        document.getElementById("webcam-container").style.display = "none"; 
 
-        // Para a webcam
-        stopWebcam(); // Para a webcam
+        
+        stopWebcam(); 
         document.getElementById("webcam").innerHTML = "Usar Câmera";
+        webcamButton.classList.remove("large"); 
     }
 }
 
-// Parar a webcam e remover elementos
+
 async function stopWebcam() {
     await webcam.stop();
     document.getElementById("webcam-container").removeChild(webcam.canvas);
@@ -36,7 +37,6 @@ async function stopWebcam() {
     cancelAnimationFrame(animationFrameId);
 }
 
-// Iniciar a webcam e carregar o modelo
 async function init() {
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
@@ -49,7 +49,7 @@ async function init() {
         return;
     }
 
-    webcam = new tmImage.Webcam(200, 200, true); // Ajuste da resolução da webcam
+    webcam = new tmImage.Webcam(200, 200, true); 
     await webcam.setup();
     await webcam.play();
     
@@ -60,7 +60,6 @@ async function init() {
     document.getElementById("webcam-container").appendChild(webcam.canvas);
 }
 
-// Loop de predição da câmera
 async function loop() {
     if (!isWebcamActive) return;
     
@@ -70,17 +69,16 @@ async function loop() {
     animationFrameId = window.requestAnimationFrame(loop);
 }
 
-// Carregar modelo e analisar imagem carregada
 async function init_image() {
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
     
     try {
-        model = await tmImage.load(modelURL, metadataURL);  // Carregar o modelo
-        const previewImage = document.getElementById("img");  // Pega a imagem carregada
+        model = await tmImage.load(modelURL, metadataURL);  
+        const previewImage = document.getElementById("img");  
 
         if (previewImage.src) {
-            await predict(previewImage);  // Faz a predição da imagem carregada
+            await predict(previewImage);  
         } else {
             alert("Por favor, selecione uma imagem primeiro.");
         }
@@ -89,7 +87,7 @@ async function init_image() {
     }
 }
 
-// Predição do modelo
+
 async function predict(input) {
     try {
         const prediction = await model.predict(input);
@@ -99,10 +97,9 @@ async function predict(input) {
         const className = bestPrediction.className;
         const probability = (bestPrediction.probability * 100).toFixed(2);
 
-        // Pega as cores do mapeamento
-        const colors = alertColors[className] || alertColors["Desconhecido"]; // Usa "Desconhecido" se não encontrar a classificação
+        
+        const colors = alertColors[className] || alertColors["Desconhecido"]; 
 
-        // Exibe o resultado com as cores dinâmicas
         labelContainer.innerHTML = `<div class="alert" style="background-color: ${colors.bg}; color: ${colors.text};">
                 ${className}</div>`;
     } catch (error) {
@@ -110,48 +107,46 @@ async function predict(input) {
     }
 }
 
-// Pré-visualizar imagem carregada
-function previewImage() {
-    var image = document.querySelector("input[name=image]").files[0];  // Pega o arquivo da input
-    var preview = document.getElementById("img"); // Pega a tag <img> dentro de #uploadedImage
-    var reader = new FileReader(); // Cria um FileReader para ler a imagem
 
-    // Quando a leitura do arquivo terminar
+function previewImage() {
+    var image = document.querySelector("input[name=image]").files[0];  
+    var preview = document.getElementById("img"); 
+    var reader = new FileReader(); 
+
     reader.onloadend = () => {
-        preview.src = reader.result; // Define o src da imagem com o resultado da leitura
-        preview.style.display = "block"; // Exibe a imagem carregada
+        preview.src = reader.result; 
+        preview.style.display = "block"; 
     };
 
     if (image) {
-        reader.readAsDataURL(image);  // Lê o arquivo como uma URL de dados
-        document.getElementById("location-src").innerText = image.name; // Exibe o nome do arquivo
+        reader.readAsDataURL(image); 
+        document.getElementById("location-src").innerText = image.name; 
     } else {
-        preview.src = "";  // Limpa o conteúdo do src se não houver imagem
-        preview.style.display = "none"; // Oculta a imagem
+        preview.src = "";  
+        preview.style.display = "none"; 
     }
 }
 
-// Mapeamento de tipos de resíduos para suas cores
 const alertColors = {
     "Plástico": {
-        bg: "#dc3545", // Cor de fundo (verde forte)
-        text: "#ffffff" // Cor do texto (branco)
+        bg: "#dc3545", 
+        text: "#ffffff" 
     },
     "Metal": {
-        bg: "#ffc107", // Cor de fundo (azul forte)
-        text: "#ffffff" // Cor do texto (branco)
+        bg: "#ffc107", 
+        text: "#ffffff" 
     },
     "Papel": {
-        bg: "#007bff", // Cor de fundo (amarelo forte)
-        text: "#000000" // Cor do texto (preto)
+        bg: "#007bff", 
+        text: "#000000" 
     },
     "Vidro": {
-        bg: "#28a745", // Cor de fundo (cinza forte)
-        text: "#ffffff" // Cor do texto (branco)
+        bg: "#28a745", 
+        text: "#ffffff" 
     },
     "Desconhecido": {
-        bg: "#6c757d", // Cor de fundo (vermelho)
-        text: "#ffffff" // Cor do texto (branco)
+        bg: "#6c757d", 
+        text: "#ffffff" 
     }
 };
 
